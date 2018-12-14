@@ -1,6 +1,12 @@
 A Simple package to parse apache‘s access.log
 -----------------------------------------------------------
 
+* How to install
+
+` make install `
+
+
+
 * How to use
 ```
 In [1]: import accesslog
