@@ -2,10 +2,11 @@
 # coding=utf-8
 
 import re
+from io import TextIOWrapper
 import six
 
-from io import TextIOWrapper
-if six.PY3:
+PY3 = six.PY3
+if PY3:
     from urllib import parse
 else:
     import urlparse as parse
@@ -16,7 +17,10 @@ reg = re.compile('"(.*?)"')
 
 class LOGS():
     def __init__(self, fileobj):
-        assert isinstance(fileobj, TextIOWrapper) or isinstance(fileobj, file)
+        if PY3:
+            assert isinstance(fileobj, TextIOWrapper)
+        else:
+            assert isinstance(fileobj, file)
         #assert fileobj.readable()
         assert 'r' in fileobj.mode
         self.logs = [ACCESS(text.strip()) for text in fileobj if text.strip()]
@@ -62,26 +66,34 @@ class ACCESS():
     def __repr__(self):
         return '<AccessLogObj> code: %s    at address %s'%(self.code, hex(id(self)))
 
-    def get_remote_ip(self):
+    @property
+    def RemoteIP(self):
         return self.remote_ip
 
-    def get_visit_time(self):
+    @property
+    def VisitTime(self):
         return self.visit_time
 
-    def get_method(self):
+    @property
+    def Method(self):
         return self.method
 
-    def get_req_addr(self):
+    @property
+    def ReqAddr(self):
         return self.req_addr
 
-    def get_code(self):
+    @property
+    def Code(self):
         return self.code
 
-    def get_res_len(self):
+    @property
+    def ResLen(self):
         return self.res_len
 
-    def get_referer(self):
+    @property
+    def Referer(self):
         return self.referer
 
-    def get_ua(self):
+    @property
+    def UA(self):
         return self.ua
