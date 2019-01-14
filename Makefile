@@ -6,7 +6,7 @@ install:
 	@ make clean
 
 test:
-	echo Done
+	nosetests -c nose.cfg
 
 clean:
 	@ - rm -rf *.egg-info dist
