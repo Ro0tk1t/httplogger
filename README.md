@@ -1,4 +1,6 @@
-A Simple package to parse apache‘s access.log
+<img src="https://travis-ci.com/Ro0tk1t/httplogger.svg?branch=master" alt="build:passed">
+
+A Simple package to parse apache’s access.log
 -----------------------------------------------------------
 
 * How to install
@@ -9,7 +11,7 @@ A Simple package to parse apache‘s access.log
 
 * How to use
 ```
-In [1]: import accesslog
+In [1]: from httplogger import accesslog
 
 In [2]: f = open('access.log')
 
